@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'big_text.dart';
 
 class BodyCard extends StatelessWidget {
+  final void Function()? onTap;
   final double height;
   final double width;
   final double fontSize;
@@ -21,11 +22,12 @@ class BodyCard extends StatelessWidget {
     required this.svgImg,
     required this.borderRadius,
     required this.fontSize,
+    required this.onTap,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         padding: EdgeInsets.only(left: width > 200 ? 12 : 5),
         height: height,

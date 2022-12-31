@@ -35,6 +35,7 @@ class BottomSheetCard extends StatelessWidget {
                 },
                 child: SvgPicture.asset(Assets.settings)),
             BodyCard(
+              onTap: () {},
               fontSize: 14,
               borderRadius: 90,
               title: titles[0].title,

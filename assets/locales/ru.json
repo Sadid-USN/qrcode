@@ -2,10 +2,11 @@
      "mycar":    "Моя машина",
      "mychild":    "Мой ребенок",
      "myflat":    "Моя квартира",
-     "mywallet":    "Моя кошелёк",
-     "myphone":    "Моя телефон",
+     "mywallet":    "Мой кошелёк",
+     "myphone":    "Мой телефон",
      "mycodes":    "Мои коды",
      "allcodes":    "Все коды",
-     "language":    "Русский"
+     "language":    "Русский",
+     "qrcode":   "QR код"
 
 }
