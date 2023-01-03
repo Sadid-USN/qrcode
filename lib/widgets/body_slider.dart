@@ -1,33 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 import 'package:qrcode/constants/assets.dart';
+import 'package:qrcode/controller/user_provider.dart';
 import 'package:qrcode/data/titels.dart';
 import 'package:qrcode/pages/qr_code_page.dart';
-import 'package:qrcode/services/api_services.dart';
 import 'package:qrcode/widgets/body_card.dart';
 
-class BodySlider extends StatelessWidget {
+class BodySlider extends StatefulWidget {
   const BodySlider({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<BodySlider> createState() => _BodySliderState();
+}
+
+class _BodySliderState extends State<BodySlider> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+// your code goes here
+      Provider.of<UserProvider>(
+        context,
+        listen: false,
+      ).getUsers();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height / 2 * 1.3,
-      child: FutureBuilder(
-        future: ApiServices.getUsers(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text('');
-          } else if (snapshot.hasError) {
-            return Center(
-              child: Text('${snapshot.hasError}'),
-            );
-          }
-          if (snapshot.hasData) {
-            var users = snapshot.data!;
-            return ListView.separated(
+    return Consumer<UserProvider>(
+      builder: (context, value, child) {
+        return SizedBox(
+            height: MediaQuery.of(context).size.height / 2 * 1.3,
+            child: ListView.separated(
                 separatorBuilder: (context, index) {
                   return const SizedBox(height: 12);
                 },
@@ -36,13 +44,15 @@ class BodySlider extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: titles.length - 1,
                 itemBuilder: (context, index) {
+                  var users = value.users;
+                  // List<UsersModel>? users;
                   return BodyCard(
                     onTap: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
                         return QRCodePage(
-                          index: index,
                           users: users[index],
+                          index: index,
                         );
                       }));
                     },
@@ -54,14 +64,8 @@ class BodySlider extends StatelessWidget {
                     width: MediaQuery.of(context).size.width / 2 * 1.8,
                     svgImg: SvgPicture.asset(svgAssets[index]),
                   );
-                });
-          } else {
-            return const Center(
-              child: Text('There is no Data'),
-            );
-          }
-        },
-      ),
+                }));
+      },
     );
   }
 }

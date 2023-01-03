@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:provider/provider.dart';
+import 'package:qrcode/controller/user_provider.dart';
 import 'package:qrcode/pages/home_page.dart';
 
 import 'colors/app_colors.dart';
@@ -26,17 +28,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LocaleBuilder(
-      builder: (locale) => MaterialApp(
-        localizationsDelegates: Locales.delegates,
-        supportedLocales: Locales.supportedLocales,
-        locale: locale,
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData.dark().copyWith(
-          backgroundColor: AppColors.mainBgColor,
-          scaffoldBackgroundColor: AppColors.mainBgColor,
+      builder: (locale) => ChangeNotifierProvider<UserProvider>(
+        create: (context) => UserProvider(),
+        child: MaterialApp(
+          localizationsDelegates: Locales.delegates,
+          supportedLocales: Locales.supportedLocales,
+          locale: locale,
+          title: 'QR Code',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData.dark().copyWith(
+            backgroundColor: AppColors.mainBgColor,
+            scaffoldBackgroundColor: AppColors.mainBgColor,
+          ),
+          home: const HomePage(),
         ),
-        home: const HomePage(),
       ),
     );
   }
