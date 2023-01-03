@@ -45,7 +45,7 @@ class _BodySliderState extends State<BodySlider> {
                 itemCount: titles.length - 1,
                 itemBuilder: (context, index) {
                   var users = value.users;
-                  // List<UsersModel>? users;
+
                   return BodyCard(
                     onTap: () {
                       Navigator.of(context)
