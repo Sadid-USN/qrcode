@@ -54,21 +54,21 @@ class _BodySliderState extends State<BodySlider> {
                 itemBuilder: (context, index) {
                   print(users.length);
 
-                  List<Widget> cards = [];
-                  for (int i = 0; i < 5; i++) {
-                    cards.add(BodyCard(
-                      height: 100,
-                      width: 200,
-                      color: Colors.blue,
-                      title: 'Card $i',
-                      svgImg: SvgPicture.asset('assets/card$i.svg'),
-                      borderRadius: 20,
-                      fontSize: 16,
-                      onTap: () {
-                        // Do something when the card is tapped
-                      },
-                    ));
-                  }
+                  // List<Widget> cards = [];
+                  // for (int i = 0; i < 5; i++) {
+                  //   cards.add(BodyCard(
+                  //     height: 100,
+                  //     width: 200,
+                  //     color: Colors.blue,
+                  //     title: 'Card $i',
+                  //     svgImg: SvgPicture.asset('assets/card$i.svg'),
+                  //     borderRadius: 20,
+                  //     fontSize: 16,
+                  //     onTap: () {
+                  //       // Do something when the card is tapped
+                  //     },
+                  //   ));
+                  // }
 
                   return BodyCard(
                     onTap: () {
