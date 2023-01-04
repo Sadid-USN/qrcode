@@ -44,29 +44,29 @@ class CustomSkeleton extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 40,
-            ),
-            Skelton(
-              height: 70,
-              width: MediaQuery.of(context).size.width,
-            ),
-            Skelton(
-              height: 70,
-              width: MediaQuery.of(context).size.width,
-            ),
-            Skelton(
-              height: 70,
-              width: MediaQuery.of(context).size.width,
-            ),
-            Skelton(
-              height: 70,
-              width: MediaQuery.of(context).size.width,
-            ),
-            Skelton(
-              height: 70,
-              width: MediaQuery.of(context).size.width,
-            ),
+            // const SizedBox(
+            //   height: 40,
+            // ),
+            // Skelton(
+            //   height: 70,
+            //   width: MediaQuery.of(context).size.width,
+            // ),
+            // Skelton(
+            //   height: 70,
+            //   width: MediaQuery.of(context).size.width,
+            // ),
+            // Skelton(
+            //   height: 70,
+            //   width: MediaQuery.of(context).size.width,
+            // ),
+            // Skelton(
+            //   height: 70,
+            //   width: MediaQuery.of(context).size.width,
+            // ),
+            // Skelton(
+            //   height: 70,
+            //   width: MediaQuery.of(context).size.width,
+            // ),
           ],
         ),
       ),
@@ -97,7 +97,7 @@ class Skelton extends StatelessWidget {
             blurRadius: 6.0,
           ),
         ],
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(22.0),
         gradient: const LinearGradient(
           colors: [
             Color(0xFFD8E3E7),
@@ -112,6 +112,40 @@ class Skelton extends StatelessWidget {
         ),
         color: Colors.grey[300],
       ),
+    );
+  }
+}
+
+class BodySliderSkeleton extends StatelessWidget {
+  const BodySliderSkeleton({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Skelton(
+          height: 70,
+          width: MediaQuery.of(context).size.width,
+        ),
+        Skelton(
+          height: 70,
+          width: MediaQuery.of(context).size.width,
+        ),
+        Skelton(
+          height: 70,
+          width: MediaQuery.of(context).size.width,
+        ),
+        Skelton(
+          height: 70,
+          width: MediaQuery.of(context).size.width,
+        ),
+        Skelton(
+          height: 70,
+          width: MediaQuery.of(context).size.width,
+        ),
+        const SizedBox(
+          height: 70,
+        ),
+      ],
     );
   }
 }

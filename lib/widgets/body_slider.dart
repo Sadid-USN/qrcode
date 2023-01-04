@@ -6,6 +6,7 @@ import 'package:qrcode/controller/user_provider.dart';
 import 'package:qrcode/data/titels.dart';
 import 'package:qrcode/pages/qr_code_page.dart';
 import 'package:qrcode/widgets/body_card.dart';
+import 'package:qrcode/widgets/skeleton.dart';
 
 class BodySlider extends StatefulWidget {
   const BodySlider({
@@ -32,7 +33,14 @@ class _BodySliderState extends State<BodySlider> {
   @override
   Widget build(BuildContext context) {
     return Consumer<UserProvider>(
-      builder: (context, value, child) {
+      builder: (context, userData, child) {
+        var users = userData.users;
+
+        if (users.isEmpty) {
+          // Display a loading indicator
+          return const BodySliderSkeleton();
+        }
+
         return SizedBox(
             height: MediaQuery.of(context).size.height / 2 * 1.3,
             child: ListView.separated(
@@ -44,7 +52,7 @@ class _BodySliderState extends State<BodySlider> {
                 shrinkWrap: true,
                 itemCount: titles.length - 1,
                 itemBuilder: (context, index) {
-                  var users = value.users;
+                  print(users.length);
 
                   return BodyCard(
                     onTap: () {

@@ -18,51 +18,50 @@ class QRCodePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.backColor,
-        title: const LocaleText('qrcode'),
-        centerTitle: true,
-      ),
-      body: ListTile(
-        title: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.network(
-              users.image.toString(),
-              height: 200,
-              width: 200,
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '${users.firstName} ${users.lastName}',
-                  style: const TextStyle(color: Colors.black, fontSize: 29),
-                ),
-                Text(
-                  'Age: ${users.age}',
-                  style: const TextStyle(color: Colors.black, fontSize: 29),
-                ),
-                Text(
-                  'Gender: ${users.gender}',
-                  style: const TextStyle(color: Colors.black, fontSize: 29),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            SvgPicture.asset(
-              svgAssets[index],
-              height: 100,
-            ),
-          ],
+        appBar: AppBar(
+          backgroundColor: AppColors.backColor,
+          title: const LocaleText('qrcode'),
+          centerTitle: true,
         ),
-      ),
-    );
+        body: ListTile(
+          title: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.network(
+                users.image.toString(),
+                height: 200,
+                width: 200,
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '${users.firstName} ${users.lastName}',
+                    style: const TextStyle(color: Colors.black, fontSize: 29),
+                  ),
+                  Text(
+                    'Age: ${users.age}',
+                    style: const TextStyle(color: Colors.black, fontSize: 29),
+                  ),
+                  Text(
+                    'Gender: ${users.gender}',
+                    style: const TextStyle(color: Colors.black, fontSize: 29),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              SvgPicture.asset(
+                svgAssets[index],
+                height: 100,
+              ),
+            ],
+          ),
+        ));
   }
 }

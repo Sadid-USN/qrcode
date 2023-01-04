@@ -10,7 +10,6 @@ class UserProvider extends ChangeNotifier {
 
   Future<void> getUsers() async {
     isLoading = true;
-    notifyListeners();
 
     final response = await _userServices.getUsers();
 
